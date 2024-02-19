@@ -14,7 +14,7 @@ export default function useStateMachineInput(
   inputName?: string
 ) {
   let input: StateMachineInput | null = null;
-  console.log('useStateMachineInput: ', stateMachineName, inputName, rive);
+  // console.log('useStateMachineInput: ', stateMachineName, inputName, rive);
 
   if (!rive || !stateMachineName || !inputName) {
     input = null;

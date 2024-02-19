@@ -30,14 +30,13 @@ const options = {
 
 const riveHandler = (riveInstance: any) => {
   rive = riveInstance;
-  console.log('parent rive instance', rive);
+  // console.log('parent rive instance', rive);
   agreeInput = useStateMachineInput(rive.value, 'default', 'agree');
   disagreeInput = useStateMachineInput(rive.value, 'default', 'disagree');
 };
 
 const clickHandler = () => {
   console.log('clickHandler');
-  console.log('rive', rive.value);
   if (disagreeInput) {
     disagreeInput.fire();
   }

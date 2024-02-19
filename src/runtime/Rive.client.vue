@@ -4,9 +4,6 @@ import { useWindowSize } from '@vueuse/core';
 import { ref,computed, onMounted, onUnmounted, watch, watchEffect, nextTick, onUpdated } from 'vue';
 import type { UseRiveParameters, UseRiveOptions, Dimensions } from './Rive..vue';
 
-nextTick(() => {
-  console.log('nextTick');
-});
 
 /**
  * Props definition
@@ -134,6 +131,7 @@ watch(animations, () => {
  * onMounted initializes the Rive instance
  */
 onMounted(() => {
+  nextTick(() => {
   if (canvas.value) {
     const { useOffscreenRenderer } = options.value;
     const r = new Rive({
@@ -147,6 +145,7 @@ onMounted(() => {
       emit('riveIsLoaded', r);
     });
   }
+});
 });
 
 onUnmounted(() => {
@@ -160,37 +159,10 @@ defineExpose({
   RiveInstance,
 });
 
-console.log('RiveInstance', RiveInstance);
-
-onUpdated(() => {
-  if (canvas.value) {
-    const { useOffscreenRenderer } = options.value;
-    const r = new Rive({
-      useOffscreenRenderer,
-      ...props.riveParams,
-      canvas: canvas.value,
-    });
-    r.on(EventType.Load, () => {
-      RiveInstance = r;
-      riveIsLoaded.value = true;
-      emit('riveIsLoaded', r);
-    });
-  }
-});
-
 </script>
 <template>
   <div ref="container">
   <canvas ref="canvas" style="vertical-align: top"></canvas>
-
-    <pre>
-      {{ props.riveParams }}
-      {{ props.options }}
-
-
-      DENEME
-      {{ RiveInstance }}
-    </pre>
 </div>
 </template>
 <style>
