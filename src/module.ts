@@ -1,4 +1,5 @@
 import { defineNuxtModule, addPlugin, createResolver, addComponent, addImportsDir } from '@nuxt/kit'
+import { addCustomTab } from '@nuxt/devtools-kit'
 
 // Module options TypeScript interface definition
 export interface ModuleOptions {
@@ -24,6 +25,20 @@ export default defineNuxtModule<ModuleOptions>({
     })
 
     // addImportsDir(resolver.resolve('runtime/composables'))
+
+
+    addCustomTab({
+      name: 'rive',
+      title: 'Nuxt Rive',
+      icon: 'simple-icons:rive',
+      view: {
+        type: 'iframe',
+        src: 'https://github.com/mrnasil/nuxt-rive?tab=readme-ov-file'
+      }
+    })
+  
+  
+
 
   } 
 
