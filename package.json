@@ -27,6 +27,9 @@
     "test": "vitest run",
     "test:watch": "vitest watch"
   },
+  "stackblitz": {
+    "startCommand": "pnpm run dev:prepare && pnpm run dev"
+  },
   "dependencies": {
     "@nuxt/kit": "^3.10.2",
     "@rive-app/webgl": "^2.10.1",
