@@ -2,7 +2,7 @@
 import { EventType, Rive } from '@rive-app/webgl';
 import { useWindowSize } from '@vueuse/core';
 import { ref,computed, onMounted, onUnmounted, watch, watchEffect, nextTick, onUpdated } from 'vue';
-import type { UseRiveParameters, UseRiveOptions, Dimensions } from './Rive..vue';
+import type { UseRiveParameters, UseRiveOptions, Dimensions } from '../runtime/types/index';
 
 
 /**
@@ -166,4 +166,4 @@ defineExpose({
 </div>
 </template>
 <style>
-</style>
+</style>./composables/Rive

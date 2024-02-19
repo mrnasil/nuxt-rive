@@ -2,8 +2,7 @@
 // for testing purposes with auto-import disabled
 // import { Rive } from '#components'
 import { Layout, Fit, Alignment } from '@rive-app/webgl';
-import type { StateMachineInput } from '@rive-app/webgl';
-
+import type { StateMachineInput } from '../composables/useStateMachineInput';
 import useStateMachineInput from '../composables/useStateMachineInput'
 
 

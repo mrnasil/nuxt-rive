@@ -1,4 +1,5 @@
 import { Rive, StateMachineInput } from '@rive-app/webgl';
+export type { StateMachineInput } from '@rive-app/webgl';
 
 /**
  * Custom hook for fetching a stateMachine input from a rive file.
