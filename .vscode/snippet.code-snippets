@@ -1,0 +1,78 @@
+{
+    "Print Vue 3 Only Setup Script": {
+      "prefix": "ssetup",
+      "body": ["<script setup>", "$1", "</script>"],
+      "description": "Print Setup Script Tag"
+    },
+    "Print Vue 3 Default Layout": {
+      "prefix": "vdef",
+      "body": [
+        "<template>",
+        "",
+        "</template>",
+        "<script>",
+        "export default{",
+        "setup(){",
+        "}",
+        "}",
+        "</script>"
+      ],
+      "description": "Print Default Vue 3 Layout without style tag"
+    },
+    "Print Vue 3 Default Layout with SFC": {
+      "prefix": "sdef",
+      "body": [
+        "<template>",
+        "$1",
+        "</template>",
+        "<script setup>",
+        "$2",
+        "</script>"
+      ],
+      "description": "Print Default Vue 3 Layout with SFC and without style tag"
+    },
+    "Print Nuxt 3 Default Layout with SFC": {
+      "prefix": "ndef",
+      "body": [
+        "<script setup>",
+        "",
+        "</script>",
+        "<template>",
+        "<div>page</div>",
+        "</template>"
+      ],
+      "description": "Print Default Nuxt 3 Layout with SFC and without style tag"
+    },
+    "Print Nuxt 3 Default Layout with SFC and TS": {
+      "prefix": "ntdef",
+      "body": [
+        "<script setup lang=\"ts\">",
+        "",
+        "</script>",
+        "<template>",
+        "<div>page</div>",
+        "</template>"
+      ],
+      "description": "Print Default Nuxt 3 Layout with SFC and without style tag"
+    },
+    "Console Log": {
+      "prefix": "yolo",
+      "body": ["console.log('${1:object} :>> ', ${1:object});"],
+      "description": "Print Default Nuxt 3 Layout with SFC and without style tag"
+    },
+    "Nuxt 3 Use State": {
+      "prefix": "nst",
+      "body": ["const ${1:stateName} = useState('${1:stateName}', () => ${2})"],
+      "description": "Nuxt 3 useState"
+    },
+    "SFC Function ": {
+      "prefix": "yfc",
+      "body": ["const ${1:functionName} = () => {", "  ${2}", "}"],
+      "description": "Nuxt 3 useState"
+    },
+    "Heroicon Import": {
+      "prefix": "him",
+      "body": ["import {$1} from '@heroicons/vue/24/outline'"],
+      "description": "Heroicon import (v2)"
+    }
+  }
