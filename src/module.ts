@@ -23,7 +23,7 @@ export default defineNuxtModule<ModuleOptions>({
       filePath: resolver.resolve('./runtime/Rive.client.vue'),
     })
 
-    addImportsDir(resolver.resolve('runtime/composables'))
+    // addImportsDir(resolver.resolve('runtime/composables'))
 
   } 
 
