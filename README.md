@@ -17,7 +17,7 @@ Find and replace all on all files (CMD+SHIFT+F):
 My new Nuxt module for doing amazing things.
 
 - [✨ &nbsp;Release Notes](/CHANGELOG.md)
-<!-- - [🏀 Online playground](https://stackblitz.com/github/your-org/my-module?file=playground%2Fapp.vue) -->
+- [🏀 Online playground](https://stackblitz.com/~/github.com/mrnasil/nuxt-rive)
 <!-- - [📖 &nbsp;Documentation](https://example.com) -->
 
 ## Features
