@@ -30,7 +30,8 @@
   "dependencies": {
     "@nuxt/kit": "^3.10.2",
     "@rive-app/webgl": "^2.10.1",
-    "@vueuse/core": "^10.7.2"
+    "@vueuse/core": "^10.7.2",
+    "@nuxt/ui": "^2.13.0"
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
