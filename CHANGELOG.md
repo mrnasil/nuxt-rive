@@ -1,6 +1,29 @@
 # Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+## v1.0.2
+
+[compare changes](https://github.com/mrnasil/nuxt-rive/compare/v1.0.1...v1.0.2)
+
+### 📖 Documentation
+
+- **README.md:** Update README with information about the Rive integration in Nuxt application ([4c42375](https://github.com/mrnasil/nuxt-rive/commit/4c42375))
+- **README.md:** Update links formatting for Release Notes, Online playground, and Documentation sections to improve readability and consistency ([bf2745e](https://github.com/mrnasil/nuxt-rive/commit/bf2745e))
+- **README.md:** Remove commented out template code and update README with correct image link and formatting ([87d06b6](https://github.com/mrnasil/nuxt-rive/commit/87d06b6))
+
+### 🏡 Chore
+
+- **.eslintignore): update ignore patterns to exclude additional directories and files 🔧 chore(.npmrc): add new line at the end of the file 🔧 chore(build.config.ts): add build configuration file to disable treeshaking and handle a specific issue with unbuild 🔥 refactor(playground/app.config.ts): remove unused app configuration file 🔧 chore(playground/nuxt.config.ts): comment out devtools option in nuxt configuration 🔧 chore(playground/package.json): remove unused dependency and devDependency 🔧 chore(playground/pages/index.vue): remove unused class from div element 🔥 refactor(playground/tailwind.config.ts): remove unused tailwind configuration file 🔧 chore(pnpm-workspace.yaml:** Add pnpm workspace configuration file to include additional packages in the workspace ([ee975a7](https://github.com/mrnasil/nuxt-rive/commit/ee975a7))
+- **NuxtRive.client.vue:** Remove unnecessary import statement and add newline at the end of the file for consistency ([707f798](https://github.com/mrnasil/nuxt-rive/commit/707f798))
+
+### 🎨 Styles
+
+- **README.md:** Update image link in the README to display the correct image ([24cfd61](https://github.com/mrnasil/nuxt-rive/commit/24cfd61))
+
+### ❤️ Contributors
+
+- Mrnasil ([@mrnasil](http://github.com/mrnasil))
+
 ## v1.0.1
 
 
