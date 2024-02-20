@@ -14,18 +14,29 @@ Find and replace all on all files (CMD+SHIFT+F):
 [![License][license-src]][license-href]
 [![Nuxt][nuxt-src]][nuxt-href]
 
-My new Nuxt module for doing amazing things.
+Integrate [Rive](https://rive.app) into your [Nuxt](https://nuxt.com) application.
 
-- [✨ &nbsp;Release Notes](/CHANGELOG.md)
-- [🏀 Online playground](https://stackblitz.com/~/github.com/mrnasil/nuxt-rive)
-<!-- - [📖 &nbsp;Documentation](https://example.com) -->
+This library allows full control over Rive files with a high-level API for hooking up many simple interactions and animations, as well as a low-level API that allows you to drive your own render loop to create multiple artboards, animations, and state machines all in one canvas.
+
+ [✨ &nbsp;Release Notes](/CHANGELOG.md)
+ [▶️ Online playground](https://stackblitz.com/~/github.com/mrnasil/nuxt-rive)
+ [📖 &nbsp;Documentation](https://help.rive.app/getting-started/introduction)
 
 ## Features
 
-<!-- Highlight some of the features your module provide here -->
-- ⛰ &nbsp;Foo
-- 🚠 &nbsp;Bar
-- 🌲 &nbsp;Baz
+- 📦  Extendable by Nuxt modules
+- 🚀  Supports Nuxt 3 / Rive
+
+
+## Rive Overview
+
+[Rive](https://rive.app) is a real-time interactive design and animation tool that helps teams create and run interactive animations anywhere. Designers and developers use our collaborative editor to create motion graphics that respond to different states and user inputs. Our lightweight open-source runtime libraries allow them to load their animations into apps, games, and websites.
+
+🏡 [Homepage](https://rive.app/)
+
+📘 [General help docs](https://help.rive.app/)
+
+🛠 [Learning Rive](https://rive.app/learn-rive)
 
 ## Quick Setup
 
@@ -54,31 +65,17 @@ export default defineNuxtConfig({
 
 That's it! You can now use Nuxt-Rive in your Nuxt app ✨
 
-## Development
+## Contributing
 
-```bash
-# Install dependencies
-npm install
+1. Install dependencies with `pnpm`.
+2. Run `pnpm dev:prepare` to generate stubbed `dist` directory.
+3. Make your changes.
+4. Run `pnpm lint`  to verify that there is no issues (consider adding tests).
+5. Submit a PR.
 
-# Generate type stubs
-npm run dev:prepare
+## License
 
-# Develop with the playground
-npm run dev
-
-# Build the playground
-npm run dev:build
-
-# Run ESLint
-npm run lint
-
-# Run Vitest
-npm run test
-npm run test:watch
-
-# Release new version
-npm run release
-```
+This repository is licensed under the [MIT License](LICENSE). Feel free to use the code and modify it according to your needs.
 
 <!-- Badges -->
 [npm-version-src]: https://img.shields.io/npm/v/nuxt-rive/latest.svg?style=flat&colorA=020420&colorB=00DC82
