@@ -1,12 +1,4 @@
-<!--
-Get your module up and running quickly.
-
-Find and replace all on all files (CMD+SHIFT+F):
-- Name: My Module
-- Package name: nuxt-rive
-- Description: My new Nuxt module
--->
-
+[![nuxt-rive](*.jpg)](https://github.com/mrnasil/nuxt-rive)
 # Nuxt-Rive
 
 [![npm version][npm-version-src]][npm-version-href]
