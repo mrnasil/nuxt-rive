@@ -42,7 +42,6 @@ const clickHandler = () => {
 <template>
   <div
     id="canvasContainer"
-    class="w-screen h-screen min-h-screen relative overflow-hidden"
   >
     <Rive
       id="rive"

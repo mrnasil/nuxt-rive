@@ -1,7 +1,7 @@
 export default defineNuxtConfig({
-  modules: ['../src/module', '@nuxt/ui','nuxt-icon','@nuxtjs/color-mode', '@nuxtjs/tailwindcss'],
+  modules: ['../src/module'],
   nuxtRive: {
-    devtools: true,
+    // devtools: true,
   },
-  devtools: { enabled: true }
+  devtools: { enabled: true },
 })
