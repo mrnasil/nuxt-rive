@@ -1,4 +1,4 @@
-import { Rive, type RiveParameters } from '@rive-app/webgl';
+import {  type RiveParameters } from '@rive-app/webgl';
 
 export type UseRiveParameters = Partial<Omit<RiveParameters, 'canvas'>> | null;
 

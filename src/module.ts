@@ -1,4 +1,4 @@
-import { defineNuxtModule, addPlugin, createResolver, addComponent, addImportsDir } from '@nuxt/kit'
+import { defineNuxtModule, createResolver, addComponent } from '@nuxt/kit'
 import { addCustomTab } from '@nuxt/devtools-kit'
 
 // Module options TypeScript interface definition
@@ -13,7 +13,7 @@ export default defineNuxtModule<ModuleOptions>({
   },
   // Default configuration options of the Nuxt module
   defaults: {},
-  setup(options, nuxt) {
+  setup() {
     const resolver = createResolver(import.meta.url)
 
     // Do not add the extension since the `.ts` will be transpiled to `.mjs` after `npm run prepack`
@@ -21,7 +21,7 @@ export default defineNuxtModule<ModuleOptions>({
 
     addComponent({
       name: 'Rive',
-      filePath: resolver.resolve('./runtime/Rive.client.vue'),
+      filePath: resolver.resolve('./runtime/NuxtRive.client.vue'),
     })
 
     // addImportsDir(resolver.resolve('runtime/composables'))

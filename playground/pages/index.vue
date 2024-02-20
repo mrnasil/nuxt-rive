@@ -1,12 +1,11 @@
 <script setup lang="ts">
 // for testing purposes with auto-import disabled
 // import { Rive } from '#components'
-import { Layout, Fit, Alignment } from '@rive-app/webgl';
+// import { Layout, Fit, Alignment } from '@rive-app/webgl';
 import useStateMachineInput from '../composables/useStateMachineInput'
 
 
-let rive = ref(null);
-let agreeInput: StateMachineInput | null = null;
+let rive = null
 let disagreeInput: StateMachineInput | null = null;
 
 const riveParams = {
@@ -28,9 +27,7 @@ const options = {
 
 const riveHandler = (riveInstance: any) => {
   rive = riveInstance;
-  // console.log('parent rive instance', rive);
-  agreeInput = useStateMachineInput(rive.value, 'default', 'agree');
-  disagreeInput = useStateMachineInput(rive.value, 'default', 'disagree');
+  disagreeInput = useStateMachineInput(rive, 'default', 'disagree');
 };
 
 const clickHandler = () => {
@@ -43,9 +40,17 @@ const clickHandler = () => {
 
 </script>
 <template>
-  <div id="canvasContainer" class="w-screen h-screen min-h-screen relative overflow-hidden">
-    <Rive :riveParams="riveParams" :options="options" id="rive" ref="riveComp" @click="clickHandler"
-      @rive-is-loaded="riveHandler" >
-    </Rive>
+  <div
+    id="canvasContainer"
+    class="w-screen h-screen min-h-screen relative overflow-hidden"
+  >
+    <Rive
+      id="rive"
+      ref="riveComp"
+      :rive-params="riveParams"
+      :options="options"
+      @click="clickHandler"
+      @rive-is-loaded="riveHandler"
+    />
   </div>
 </template>

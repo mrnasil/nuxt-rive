@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { EventType, Rive } from '@rive-app/webgl';
 import { useWindowSize } from '@vueuse/core';
-import { ref,computed, onMounted, onUnmounted, watch, watchEffect, nextTick, onUpdated } from 'vue';
+import { ref,computed, onMounted, onUnmounted, watch, watchEffect, nextTick } from 'vue';
 import type { UseRiveParameters, UseRiveOptions, Dimensions } from '../runtime/types/index';
 
 
@@ -38,10 +38,10 @@ let RiveInstance: Rive | null = null;
   width: 0,
   height: 0,
 });
-const containerStyle = ref({
-  width: `100%`,
-  height: `100%`,
-});
+// const containerStyle = ref({
+//   width: `100%`,
+//   height: `100%`,
+// });
 
 const animations = computed(() => {
   return props.riveParams?.animations;
@@ -162,8 +162,11 @@ defineExpose({
 </script>
 <template>
   <div ref="container">
-  <canvas ref="canvas" style="vertical-align: top"></canvas>
-</div>
+    <canvas
+      ref="canvas"
+      style="vertical-align: top"
+    />
+  </div>
 </template>
 <style>
 </style>./composables/Rive
