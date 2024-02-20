@@ -1,4 +1,4 @@
-[![nuxt-rive](*.jpg)](https://github.com/mrnasil/nuxt-rive)
+[![nuxt-rive](https://raw.githubusercontent.com/mrnasil/nuxt-rive/main/assets/nuxt-rive.jpg)](https://github.com/mrnasil/nuxt-rive)
 # Nuxt-Rive
 
 [![npm version][npm-version-src]][npm-version-href]
