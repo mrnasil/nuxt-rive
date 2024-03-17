@@ -1,6 +1,10 @@
 # Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+## v1.0.8
+
+[compare changes](https://github.com/mrnasil/nuxt-rive/compare/v1.0.7...v1.0.8)
+
 ## v1.0.7
 
 [compare changes](https://github.com/mrnasil/nuxt-rive/compare/v1.0.6...v1.0.7)
