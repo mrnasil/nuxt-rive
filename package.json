@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "@nuxt/kit": "^3.10.3",
-    "@rive-app/webgl": "^2.10.1",
+    "@rive-app/webgl": "^2.10.4",
     "@vueuse/core": "^10.9.0"
   },
   "devDependencies": {

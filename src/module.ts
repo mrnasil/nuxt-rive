@@ -31,6 +31,10 @@ export default defineNuxtModule<ModuleOptions>({
     // Add imports
     addImports([
       {
+        from: "@vueuse/core",
+        name: "useWindowSize",
+      },
+      {
         from: "@rive-app/webgl",
         name: "EventType",
       },
@@ -38,6 +42,7 @@ export default defineNuxtModule<ModuleOptions>({
         from: "@rive-app/webgl",
         name: "Rive",
       },
+
     ]);
 
     addImportsDir(resolver.resolve("runtime/composables"));

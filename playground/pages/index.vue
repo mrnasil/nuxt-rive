@@ -67,6 +67,8 @@ onMounted(() => {
         @rive-is-loaded="riveHandler"
       />
     </ClientOnly>
-    <button @click="outsideClick">outsideClick Button</button>
+    <button @click="outsideClick">
+      outsideClick Button
+    </button>
   </div>
 </template>
