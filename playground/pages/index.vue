@@ -1,48 +1,63 @@
 <script setup lang="ts">
-// for testing purposes with auto-import disabled
-// import { Rive } from '#components'
-// import { Layout, Fit, Alignment } from '@rive-app/webgl';
-import useStateMachineInput from '../composables/useStateMachineInput'
-
-
-let rive = null
-let disagreeInput: StateMachineInput | null = null;
-
-const riveParams = {
-  // src: 'https://public.rive.app/community/runtime-files/6198-12051-ori.riv',
-  src: "https://cdn.rive.app/animations/vehicles.riv",
-  autoplay: true,
-  fit: 'contain',
-  Alignment: 'center',
-  isAnimationStateMachine: true,
-  stateMachines: "bumpy",
-  // artboard: 'New Artboard',
-  // animations: ['idle'],
-}
-
+let rive: any | null = ref(null);
 const options = {
   fitCanvasToArtboardHeight: false,
   useOffscreenRenderer: true,
-}
+};
+const riveParams = {
+  //https://rive.app/community/2735-5610-bear-trial/
+  src: "https://public.rive.app/community/runtime-files/2735-5610-bear-trial.riv",
+  autoplay: true,
+  fit: "contain",
+  Alignment: "center",
+  isAnimationStateMachine: true,
+  stateMachines: "Login Machine",
+  artboard: "Teddy",
+  // animations: [
+  //   "idle",
+  //   "Hands_up",
+  //   "hands_down",
+  //   "success",
+  //   "fail",
+  //   "Look_down_right",
+  //   "Look_down_left",
+  //   "look_idle",
+  // ],
+};
 
 const riveHandler = (riveInstance: any) => {
   rive = riveInstance;
-  disagreeInput = useStateMachineInput(rive, 'default', 'disagree');
+  useStateMachineInput(rive.value, "Login Machine", "trigSuccess");
 };
 
 const clickHandler = () => {
-  console.log('clickHandler');
-  if (disagreeInput) {
-    disagreeInput.fire();
+  if (rive) {
+    rive.play("hands_down");
+    const trigSuccess: StateMachineInput | null = useStateMachineInput(
+      rive,
+      "Login Machine",
+      "trigSuccess"
+    );
+    if (trigSuccess) {
+      trigSuccess.fire();
+    }
   }
 };
 
+const outsideClick = () => {
+  if (rive) {
+    rive.play("Hands_up");
+  }
+};
 
+onMounted(() => {
+  if (rive.value) {
+    rive.value.play("Hands_up");
+  }
+});
 </script>
 <template>
-  <div
-    id="canvasContainer"
-  >
+  <div>
     <Rive
       id="rive"
       ref="riveComp"
@@ -51,5 +66,8 @@ const clickHandler = () => {
       @click="clickHandler"
       @rive-is-loaded="riveHandler"
     />
+    <button @click="outsideClick">
+      outsideClick Button
+    </button>
   </div>
 </template>

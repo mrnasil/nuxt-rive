@@ -20,6 +20,8 @@ This library allows full control over Rive files with a high-level API for hooki
 - 🚀  Supports Nuxt 3 / Rive
 
 
+
+
 ## Rive Overview
 
 [Rive](https://rive.app) is a real-time interactive design and animation tool that helps teams create and run interactive animations anywhere. Designers and developers use our collaborative editor to create motion graphics that respond to different states and user inputs. Our lightweight open-source runtime libraries allow them to load their animations into apps, games, and websites.

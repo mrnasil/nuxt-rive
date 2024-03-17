@@ -1,5 +1,5 @@
 import {  type RiveParameters } from '@rive-app/webgl';
-
+export type { StateMachineInput } from '@rive-app/webgl';
 export type UseRiveParameters = Partial<Omit<RiveParameters, 'canvas'>> | null;
 
 export type UseRiveOptions = {

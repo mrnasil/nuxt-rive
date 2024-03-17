@@ -1,15 +1,26 @@
 <script setup lang="ts">
-import { EventType, Rive } from '@rive-app/webgl';
-import { useWindowSize } from '@vueuse/core';
-import { ref,computed, onMounted, onUnmounted, watch, watchEffect, nextTick } from 'vue';
-import type { UseRiveParameters, UseRiveOptions, Dimensions } from '../runtime/types/index';
-
+import { EventType, Rive } from "@rive-app/webgl";
+import { useWindowSize } from "@vueuse/core";
+import {
+  ref,
+  computed,
+  onMounted,
+  onUnmounted,
+  watch,
+  watchEffect,
+  nextTick,
+} from "vue";
+import type {
+  UseRiveParameters,
+  UseRiveOptions,
+  Dimensions,
+} from "../runtime/types/index";
 
 /**
  * Props definition
  *
  */
- const props = defineProps<{
+const props = defineProps<{
   riveParams?: UseRiveParameters;
   options?: Partial<UseRiveOptions>;
 }>();
@@ -17,9 +28,9 @@ import type { UseRiveParameters, UseRiveOptions, Dimensions } from '../runtime/t
 /**
  * Emit defintions
  */
- const emit = defineEmits(['riveIsLoaded']);
+const emit = defineEmits(["riveIsLoaded"]);
 
- /**
+/**
  * Template Refs
  */
 const canvas = ref<HTMLCanvasElement | null>(null);
@@ -34,7 +45,7 @@ const riveIsLoaded = ref(false);
 let RiveInstance: Rive | null = null;
 
 // const rive = ref<Rive | null>(null);
-  const dimensions = ref<Dimensions>({
+const dimensions = ref<Dimensions>({
   width: 0,
   height: 0,
 });
@@ -63,11 +74,10 @@ const defaultOptions = {
   useOffscreenRenderer: true,
 };
 
-
 /**
  * Watches windowsize(height and width) and updates the canvas dimensions
  */
- watchEffect(() => {
+watchEffect(() => {
   if (canvas.value && container.value && wWidth.value && wHeight.value) {
     const { width, height } = getCanvasDimensions();
     const boundsChanged =
@@ -85,8 +95,8 @@ const defaultOptions = {
         const dpr = 2;
         canvas.value.width = dpr * width;
         canvas.value.height = dpr * height;
-        canvas.value.style.width = width + 'px';
-        canvas.value.style.height = height + 'px';
+        canvas.value.style.width = width + "px";
+        canvas.value.style.height = height + "px";
       } else {
         canvas.value.width = width;
         canvas.value.height = height;
@@ -113,7 +123,7 @@ watch(animations, () => {
 /**
  * gets dimensions of container returns width and height
  */
- function getCanvasDimensions() {
+function getCanvasDimensions() {
   const { width, height } =
     container.value?.getBoundingClientRect() ?? new DOMRect(0, 0, 0, 0);
   if (RiveInstance && options.value.fitCanvasToArtboardHeight) {
@@ -123,29 +133,25 @@ watch(animations, () => {
   return { width, height };
 }
 
-
-
-
-
 /**
  * onMounted initializes the Rive instance
  */
 onMounted(() => {
   nextTick(() => {
-  if (canvas.value) {
-    const { useOffscreenRenderer } = options.value;
-    const r = new Rive({
-      useOffscreenRenderer,
-      ...props.riveParams,
-      canvas: canvas.value,
-    });
-    r.on(EventType.Load, () => {
-      RiveInstance = r;
-      riveIsLoaded.value = true;
-      emit('riveIsLoaded', r);
-    });
-  }
-});
+    if (canvas.value) {
+      const { useOffscreenRenderer } = options.value;
+      const r = new Rive({
+        useOffscreenRenderer,
+        ...props.riveParams,
+        canvas: canvas.value,
+      });
+      r.on(EventType.Load, () => {
+        RiveInstance = r;
+        riveIsLoaded.value = true;
+        emit("riveIsLoaded", r);
+      });
+    }
+  });
 });
 
 onUnmounted(() => {
@@ -153,20 +159,15 @@ onUnmounted(() => {
     RiveInstance.stopRendering();
     Object.assign(RiveInstance, null);
   }
-}); 
+});
 
 defineExpose({
   RiveInstance,
 });
-
 </script>
 <template>
   <div ref="container">
-    <canvas
-      ref="canvas"
-      style="vertical-align: top"
-    />
+    <canvas ref="canvas" style="vertical-align: top" />
   </div>
 </template>
-<style>
-</style>
+<style></style>
