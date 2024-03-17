@@ -167,6 +167,9 @@ defineExpose({
 </script>
 <template>
   <div ref="container">
-    <canvas ref="canvas" style="vertical-align: top" />
+    <canvas 
+      ref="canvas" 
+      style="vertical-align: top"
+    />
   </div>
 </template>
