@@ -27,7 +27,7 @@ const riveParams = {
 
 const riveHandler = (riveInstance: any) => {
   rive = riveInstance;
-  useStateMachineInput(rive.value, "Login Machine", "trigSuccess");
+  useStateMachineInput(rive, "Login Machine", "trigSuccess");
 };
 
 const clickHandler = () => {
@@ -49,7 +49,6 @@ const outsideClick = () => {
     rive.play("Hands_up");
   }
 };
-
 onMounted(() => {
   if (rive.value) {
     rive.value.play("Hands_up");
@@ -58,16 +57,16 @@ onMounted(() => {
 </script>
 <template>
   <div>
-    <Rive
-      id="rive"
-      ref="riveComp"
-      :rive-params="riveParams"
-      :options="options"
-      @click="clickHandler"
-      @rive-is-loaded="riveHandler"
-    />
-    <button @click="outsideClick">
-      outsideClick Button
-    </button>
+    <ClientOnly>
+      <Rive
+        id="rive"
+        ref="riveComp"
+        :rive-params="riveParams"
+        :options="options"
+        @click="clickHandler"
+        @rive-is-loaded="riveHandler"
+      />
+    </ClientOnly>
+    <button @click="outsideClick">outsideClick Button</button>
   </div>
 </template>
