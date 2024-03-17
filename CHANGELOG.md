@@ -1,6 +1,19 @@
 # Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+## v1.0.3
+
+[compare changes](https://github.com/mrnasil/nuxt-rive/compare/v1.0.2...v1.0.3)
+
+### 🏡 Chore
+
+- **release:** V1.0.2 ([6c1e3f0](https://github.com/mrnasil/nuxt-rive/commit/6c1e3f0))
+- **package.json:** Update repository field to include type and url for better clarity and compatibility ([4b4a892](https://github.com/mrnasil/nuxt-rive/commit/4b4a892))
+
+### ❤️ Contributors
+
+- Mrnasil ([@mrnasil](http://github.com/mrnasil))
+
 ## v1.0.2
 
 [compare changes](https://github.com/mrnasil/nuxt-rive/compare/v1.0.1...v1.0.2)
