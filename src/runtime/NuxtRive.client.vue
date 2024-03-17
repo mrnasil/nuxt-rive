@@ -170,4 +170,3 @@ defineExpose({
     <canvas ref="canvas" style="vertical-align: top" />
   </div>
 </template>
-<style></style>
