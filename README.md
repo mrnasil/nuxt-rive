@@ -14,24 +14,6 @@ This library allows full control over Rive files with a high-level API for hooki
  ▶️ [Online playground](https://stackblitz.com/~/github.com/mrnasil/nuxt-rive)
  📖 [Documentation](https://help.rive.app/getting-started/introduction)
 
-## Features
-
-- 📦  Extendable by Nuxt modules
-- 🚀  Supports Nuxt 3 / Rive
-
-
-
-
-## Rive Overview
-
-[Rive](https://rive.app) is a real-time interactive design and animation tool that helps teams create and run interactive animations anywhere. Designers and developers use our collaborative editor to create motion graphics that respond to different states and user inputs. Our lightweight open-source runtime libraries allow them to load their animations into apps, games, and websites.
-
-🏡 [Homepage](https://rive.app/)
-
-📘 [General help docs](https://help.rive.app/)
-
-🛠 [Learning Rive](https://rive.app/learn-rive)
-
 ## Quick Setup
 
 1. Add `nuxt-rive` dependency to your project
@@ -57,7 +39,104 @@ export default defineNuxtConfig({
 })
 ```
 
-That's it! You can now use Nuxt-Rive in your Nuxt app ✨
+## Basic Usage
+
+Use the `<Rive>` component to render your animations:
+
+```vue
+<template>
+  <ClientOnly>
+    <Rive
+      :rive-params="{
+        src: 'https://cdn.rive.app/animations/vehicles.riv',
+        autoplay: true,
+        stateMachines: 'bumpy',
+        artboard: 'Truck'
+      }"
+      :options="{
+        fitCanvasToArtboardHeight: true,
+        useOffscreenRenderer: true
+      }"
+    />
+  </ClientOnly>
+</template>
+```
+
+## Features
+
+- **Component-Based**: Easy-to-use `<Rive>` component.
+- **SSR Compatible**: Works seamlessly with Nuxt (use `<ClientOnly>` wrapper).
+- **Interactive**: Full control via `useRiveStateMachineInput`.
+- **Dynamic Text**: Update text runs at runtime with the `text-runs` prop.
+- **Events**: Listen to Rive events like Play, Pause, Stop, Loop, and StateChange.
+- **Efficient**: Uses `@rive-app/webgl` for high-performance rendering.
+
+## Component Props
+
+| Prop | Type | Description |
+| --- | --- | --- |
+| `rive-params` | `UseRiveParameters` | Configuration object for the Rive instance (src, artboard, stateMachines, etc.). |
+| `options` | `UseRiveOptions` | Runtime options like `fitCanvasToArtboardHeight` and `useOffscreenRenderer`. |
+| `text-runs` | `Record<string, string>` | **(New)** Replaces text run values dynamically. Key is the run name, value is the new text. |
+
+### `rive-params` Interface
+```ts
+interface UseRiveParameters {
+  src?: string;
+  artboard?: string;
+  animations?: string | string[];
+  stateMachines?: string | string[];
+  layout?: Layout;
+  autoplay?: boolean;
+  // ...and more standard Rive parameters
+}
+```
+
+## Events
+
+The `<Rive>` component emits the following events:
+
+- `@rive-is-loaded`: Triggered when the Rive instance is fully loaded. Returns the `Rive` instance.
+- `@play`: Triggered when an animation starts playing.
+- `@pause`: Triggered when an animation is paused.
+- `@stop`: Triggered when an animation stops.
+- `@loop`: Triggered when an animation loops.
+- `@statechange`: Triggered when a state machine changes state.
+
+## Composables
+
+### `useRiveStateMachineInput`
+
+Helper composable to control State Machine inputs (Triggers, Booleans, Numbers).
+
+```ts
+const { RiveInstance } = await useRive() // or get instance from @rive-is-loaded
+
+// Trigger an input
+useRiveStateMachineInput(RiveInstance, 'StateMachineName', 'InputName').fire()
+
+// Set a boolean
+const boolInput = useRiveStateMachineInput(RiveInstance, 'StateMachineName', 'BooleanInput')
+boolInput.value = true
+
+// Set a number
+const numInput = useRiveStateMachineInput(RiveInstance, 'StateMachineName', 'NumberInput')
+numInput.value = 50
+```
+
+## Dynamic Text Example
+
+```vue
+<template>
+  <Rive
+    :rive-params="{ src: 'my-file.riv' }"
+    :text-runs="{
+      'MyTextRun': 'Dynamic Value',
+      'Score': '100'
+    }"
+  />
+</template>
+```
 
 ## Contributing
 
