@@ -41,6 +41,18 @@ const outsideClick = () => {
     rive.value.play("Hands_up");
   }
 };
+const textRunValue = ref("Hello Rive!");
+const textRunName = ref("MyTextRun");
+const lastEvent = ref("");
+
+const onPlay = (e: any) => {
+  lastEvent.value = `Play: ${e?.data?.join(', ') || 'Animation Started'}`;
+};
+
+const onPause = (_e: any) => {
+  lastEvent.value = "Paused";
+};
+
 onMounted(() => {
   if (rive.value) {
     rive.value.play("Hands_up");
@@ -48,19 +60,44 @@ onMounted(() => {
 });
 </script>
 <template>
-  <div>
+  <div style="font-family: sans-serif; padding: 20px;">
+    <h1>Nuxt Rive Playground</h1>
+    
+    <div style="margin-bottom: 20px; padding: 15px; background: #f0f0f0; border-radius: 8px;">
+      <p><strong>Note:</strong> The default "Bear" animation may not have text runs.</p>
+      <p>To test text runs, load a Rive file with exported text and enter its name below.</p>
+      
+      <div style="display: flex; gap: 10px; margin-top: 10px;">
+        <label>
+          Run Name (Key):
+          <input v-model="textRunName" type="text" placeholder="e.g. MyTextRun">
+        </label>
+        <label>
+          Run Value:
+          <input v-model="textRunValue" type="text" placeholder="Enter text...">
+        </label>
+      </div>
+    </div>
+
     <ClientOnly>
       <Rive
         id="rive"
         ref="riveComp"
         :rive-params="riveParams"
         :options="options"
+        :text-runs="{ [textRunName]: textRunValue }"
         @click="clickHandler"
         @rive-is-loaded="riveHandler"
+        @play="onPlay"
+        @pause="onPause"
       />
     </ClientOnly>
-    <button @click="outsideClick">
-      outsideClick Button
-    </button>
+
+    <div style="margin-top: 20px;">
+      <button @click="outsideClick">
+        Trigger Animation
+      </button>
+      <p>Last Event: {{ lastEvent }}</p>
+    </div>
   </div>
 </template>

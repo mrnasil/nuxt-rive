@@ -23,12 +23,16 @@ import type {
 const props = defineProps<{
   riveParams?: UseRiveParameters;
   options?: Partial<UseRiveOptions>;
+  textRuns?: Record<string, string>;
 }>();
 
 /**
  * Emit defintions
  */
-const emit = defineEmits(["riveIsLoaded"]);
+const emit = defineEmits<{
+  (e: "riveIsLoaded", r: Rive): void;
+  (e: "play" | "pause" | "stop" | "loop" | "statechange", event: any): void;
+}>();
 
 /**
  * Template Refs
@@ -121,6 +125,21 @@ watch(animations, () => {
 });
 
 /**
+ * Watch textRuns prop and update Rive text
+ */
+watch(() => props.textRuns, (newTextRuns) => {
+  if (RiveInstance && newTextRuns) {
+    for (const [runName, value] of Object.entries(newTextRuns)) {
+      try {
+        RiveInstance.setTextRunValue(runName, value);
+      } catch (e) {
+        console.warn(`[nuxt-rive] Failed to set text run "${runName}":`, e);
+      }
+    }
+  }
+}, { deep: true });
+
+/**
  * gets dimensions of container returns width and height
  */
 function getCanvasDimensions() {
@@ -145,11 +164,30 @@ onMounted(() => {
         ...props.riveParams,
         canvas: canvas.value,
       });
+
       r.on(EventType.Load, () => {
         RiveInstance = r;
         riveIsLoaded.value = true;
+        
+        // Initial text runs
+        if (props.textRuns) {
+          for (const [runName, value] of Object.entries(props.textRuns)) {
+            try {
+              r.setTextRunValue(runName, value);
+            } catch {
+              // Ignore errors if text run doesn't exist on load
+            }
+          }
+        }
+
         emit("riveIsLoaded", r);
       });
+
+      r.on(EventType.Play, (event) => emit("play", event));
+      r.on(EventType.Pause, (event) => emit("pause", event));
+      r.on(EventType.Stop, (event) => emit("stop", event));
+      r.on(EventType.Loop, (event) => emit("loop", event));
+      r.on(EventType.StateChange, (event) => emit("statechange", event));
     }
   });
 });
@@ -157,6 +195,9 @@ onMounted(() => {
 onUnmounted(() => {
   if (RiveInstance) {
     RiveInstance.stopRendering();
+    // Clean up all the event listeners? Rive might handle this on stopRendering/cleanup, 
+    // but explicit cleanup is often safer if the instance persists. 
+    // For now, simple null assignment is what was there.
     Object.assign(RiveInstance, null);
   }
 });
