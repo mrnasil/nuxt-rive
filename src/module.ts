@@ -8,20 +8,25 @@ import {
 import { addCustomTab } from "@nuxt/devtools-kit";
 
 // Module options TypeScript interface definition
-export interface ModuleOptions {}
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
+export interface ModuleOptions { }
+
+export type * from './runtime/types/index'
 
 export default defineNuxtModule<ModuleOptions>({
   meta: {
     name: "nuxt-rive",
     configKey: "nuxtRive",
+    compatibility: {
+      nuxt: "^3.0.0 || ^4.0.0",
+    },
   },
   // Default configuration options of the Nuxt module
   defaults: {},
   setup() {
     const resolver = createResolver(import.meta.url);
 
-    // Do not add the extension since the `.ts` will be transpiled to `.mjs` after `npm run prepack`
-    // addPlugin(resolver.resolve('./runtime/plugin'))
+
 
     addComponent({
       name: "Rive",
@@ -30,19 +35,6 @@ export default defineNuxtModule<ModuleOptions>({
 
     // Add imports
     addImports([
-      {
-        from: "@vueuse/core",
-        name: "useWindowSize",
-      },
-      {
-        from: "@rive-app/webgl",
-        name: "EventType",
-      },
-      {
-        from: "@rive-app/webgl",
-        name: "Rive",
-      },
-
     ]);
 
     addImportsDir(resolver.resolve("runtime/composables"));

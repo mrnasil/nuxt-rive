@@ -1,5 +1,7 @@
 <script setup lang="ts">
-let rive: any | null = ref(null);
+import type { Rive, StateMachineInput } from "@rive-app/webgl";
+
+const rive = shallowRef<Rive | null>(null);
 const options = {
   fitCanvasToArtboardHeight: false,
   useOffscreenRenderer: true,
@@ -13,27 +15,17 @@ const riveParams = {
   isAnimationStateMachine: true,
   stateMachines: "Login Machine",
   artboard: "Teddy",
-  // animations: [
-  //   "idle",
-  //   "Hands_up",
-  //   "hands_down",
-  //   "success",
-  //   "fail",
-  //   "Look_down_right",
-  //   "Look_down_left",
-  //   "look_idle",
-  // ],
 };
 
-const riveHandler = (riveInstance: any) => {
-  rive = riveInstance;
-  useStateMachineInput(rive, "Login Machine", "trigSuccess");
+const riveHandler = (riveInstance: Rive) => {
+  rive.value = riveInstance;
+  useRiveStateMachineInput(rive, "Login Machine", "trigSuccess");
 };
 
 const clickHandler = () => {
-  if (rive) {
-    rive.play("hands_down");
-    const trigSuccess: StateMachineInput | null = useStateMachineInput(
+  if (rive.value) {
+    rive.value.play("hands_down");
+    const trigSuccess: StateMachineInput | null = useRiveStateMachineInput(
       rive,
       "Login Machine",
       "trigSuccess"
@@ -45,8 +37,8 @@ const clickHandler = () => {
 };
 
 const outsideClick = () => {
-  if (rive) {
-    rive.play("Hands_up");
+  if (rive.value) {
+    rive.value.play("Hands_up");
   }
 };
 onMounted(() => {

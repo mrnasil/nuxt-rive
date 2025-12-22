@@ -2,6 +2,14 @@
   "name": "nuxt-rive",
   "version": "1.0.8",
   "description": "Nuxt Rive module",
+  "keywords": [
+    "nuxt",
+    "module",
+    "rive",
+    "animation",
+    "webgl",
+    "nuxt-module"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mrnasil/nuxt-rive.git"
@@ -16,7 +24,6 @@
     }
   },
   "main": "./dist/module.cjs",
-  "types": "./dist/types.d.ts",
   "files": [
     "dist"
   ],
@@ -34,21 +41,23 @@
     "startCommand": "pnpm run dev:prepare && pnpm run dev"
   },
   "dependencies": {
-    "@nuxt/kit": "^3.10.3",
-    "@rive-app/webgl": "^2.10.1",
-    "@vueuse/core": "^10.9.0"
+    "@nuxt/kit": "^4.2.2",
+    "@rive-app/webgl": "^2.33.1",
+    "@vueuse/core": "^14.1.0"
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
-    "@nuxt/eslint-config": "^0.2.0",
-    "@nuxt/module-builder": "^0.5.5",
-    "@nuxt/schema": "^3.10.3",
-    "@nuxt/test-utils": "^3.12.0",
-    "@types/node": "^20.11.28",
-    "changelogen": "^0.5.5",
-    "eslint": "^8.57.0",
-    "nuxt": "^3.10.3",
-    "vitest": "^1.4.0",
-    "release-it": "17.1.1"
+    "@nuxt/eslint-config": "^1.12.1",
+    "@nuxt/module-builder": "^1.0.2",
+    "@nuxt/schema": "^4.2.2",
+    "@nuxt/test-utils": "^3.21.0",
+    "@types/node": "^25.0.3",
+    "changelogen": "^0.6.2",
+    "eslint": "^9.39.2",
+    "nuxt": "^4.2.2",
+    "release-it": "19.1.0",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.16",
+    "vue-tsc": "^3.2.1"
   }
 }
