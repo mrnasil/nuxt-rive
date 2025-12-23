@@ -41,12 +41,12 @@ export default defineNuxtConfig({
 
 ## Basic Usage
 
-Use the `<Rive>` component to render your animations:
+Use the `<NuxtRive>` component to render your animations:
 
 ```vue
 <template>
   <ClientOnly>
-    <Rive
+    <NuxtRive
       :rive-params="{
         src: 'https://cdn.rive.app/animations/vehicles.riv',
         autoplay: true,
@@ -64,7 +64,7 @@ Use the `<Rive>` component to render your animations:
 
 ## Features
 
-- **Component-Based**: Easy-to-use `<Rive>` component.
+- **Component-Based**: Easy-to-use `<NuxtRive>` component.
 - **SSR Compatible**: Works seamlessly with Nuxt (use `<ClientOnly>` wrapper).
 - **Interactive**: Full control via `useRiveStateMachineInput`.
 - **Dynamic Text**: Update text runs at runtime with the `text-runs` prop.
@@ -94,7 +94,7 @@ interface UseRiveParameters {
 
 ## Events
 
-The `<Rive>` component emits the following events:
+The `<NuxtRive>` component emits the following events:
 
 - `@rive-is-loaded`: Triggered when the Rive instance is fully loaded. Returns the `Rive` instance.
 - `@play`: Triggered when an animation starts playing.
@@ -128,7 +128,7 @@ numInput.value = 50
 
 ```vue
 <template>
-  <Rive
+  <NuxtRive
     :rive-params="{ src: 'my-file.riv' }"
     :text-runs="{
       'MyTextRun': 'Dynamic Value',

@@ -4,6 +4,15 @@
 
 [compare changes](https://github.com/mrnasil/nuxt-rive/compare/v1.1.1...v1.1.2)
 
+### 📖 Documentation
+
+- **README.md:** Fix component name from `<Rive>` to `<NuxtRive>` in usage examples and documentation
+- **docs:** Update version badge to v1.1.2 in homepage
+
+### 🏡 Chore
+
+- Update documentation to reflect correct component naming conventions
+
 ## v1.1.1
 
 [compare changes](https://github.com/mrnasil/nuxt-rive/compare/v1.1.0...v1.1.1)
