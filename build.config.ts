@@ -6,8 +6,8 @@ export default defineBuildConfig({
   failOnWarn: false,
   entries: ['src/module.ts'],
   hooks: {
-    'rollup:options' (_ctx, options) {
+    'rollup:options'(_ctx, options) {
       options.treeshake = false
-    }
-  }
+    },
+  },
 })

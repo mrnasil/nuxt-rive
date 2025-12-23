@@ -1,8 +1,8 @@
-import type { Rive, StateMachineInput } from '@rive-app/webgl';
-import { unref } from 'vue';
-import type { MaybeRef } from 'vue';
+import type { Rive, StateMachineInput } from '@rive-app/webgl'
+import { unref } from 'vue'
+import type { MaybeRef } from 'vue'
 
-export type { StateMachineInput } from '@rive-app/webgl';
+export type { StateMachineInput } from '@rive-app/webgl'
 
 /**
  * Custom hook for fetching a stateMachine input from a rive file.
@@ -15,20 +15,20 @@ export type { StateMachineInput } from '@rive-app/webgl';
 export default function useRiveStateMachineInput(
   rive: MaybeRef<Rive | null>,
   stateMachineName?: string,
-  inputName?: string
+  inputName?: string,
 ) {
-  const riveInstance = unref(rive);
-  let input: StateMachineInput | null = null;
+  const riveInstance = unref(rive)
+  let input: StateMachineInput | null = null
 
   if (!riveInstance || !stateMachineName || !inputName) {
-    return null;
+    return null
   }
 
-  const inputs = riveInstance.stateMachineInputs(stateMachineName);
+  const inputs = riveInstance.stateMachineInputs(stateMachineName)
   if (inputs) {
-    const selectedInput = inputs.find((input) => input.name === inputName);
-    input = selectedInput || null;
+    const selectedInput = inputs.find(input => input.name === inputName)
+    input = selectedInput || null
   }
 
-  return input;
+  return input
 }
