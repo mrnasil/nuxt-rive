@@ -1,6 +1,15 @@
 # Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+## v1.0.9
+
+- **Documentation**: Complete overhaul with new structure and branding.
+- **Playground**: Integrated interactive playground directly into the documentation.
+- **Branding**: Added official Rive icon to the header and improved typography.
+- **Fixes**: Resolved page not found errors and missing image assets.
+- **Fixes**: Corrected Vue component resolution warnings in markdown content.
+- **Chore**: Fixed linting errors and improved type safety in helper composables.
+
 ## v1.0.8
 
 [compare changes](https://github.com/mrnasil/nuxt-rive/compare/v1.0.7...v1.0.8)
