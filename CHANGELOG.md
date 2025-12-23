@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.1.1
+
+[compare changes](https://github.com/mrnasil/nuxt-rive/compare/v1.1.0...v1.1.1)
+
 ## [1.1.0](https://github.com/mrnasil/nuxt-rive/compare/v1.0.8...v1.1.0) (2025-12-23)
 
 ### Features
