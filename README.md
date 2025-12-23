@@ -11,8 +11,8 @@ Integrate [Rive](https://rive.app) into your [Nuxt](https://nuxt.com) applicatio
 This library allows full control over Rive files with a high-level API for hooking up many simple interactions and animations, as well as a low-level API that allows you to drive your own render loop to create multiple artboards, animations, and state machines all in one canvas.
 
  ✨ [Release Notes](/CHANGELOG.md)
- ▶️ [Online playground](https://stackblitz.com/~/github.com/mrnasil/nuxt-rive)
- 📖 [Documentation](https://help.rive.app/getting-started/introduction)
+ ▶️ [Online playground](https://nuxt-rive.pages.dev/playground)
+📖 [Documentation](https://nuxt-rive.pages.dev/)
 
 ## Quick Setup
 
