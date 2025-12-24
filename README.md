@@ -70,6 +70,17 @@ Use the `<NuxtRive>` component to render your animations:
 - **Dynamic Text**: Update text runs at runtime with the `text-runs` prop.
 - **Events**: Listen to Rive events like Play, Pause, Stop, Loop, and StateChange.
 - **Efficient**: Uses `@rive-app/webgl` for high-performance rendering.
+- **Nuxt DevTools**: Integrated DevTools tab to view and manage your Rive assets.
+
+## Nuxt DevTools Integration
+
+`nuxt-rive` comes with a custom tab for Nuxt DevTools that allows you to:
+- **Explore** all Rive assets in your project (public and assets directories).
+- **Preview** animations directly within the DevTools.
+- **Inspect** file details like size and path.
+- **Copy** usage snippets for quick integration into your components.
+
+To use it, simply open Nuxt DevTools in your development environment and click on the **Nuxt Rive** tab.
 
 ## Component Props
 
