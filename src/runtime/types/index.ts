@@ -1,3 +1,5 @@
+import './rive.d.ts'
+
 export type { Rive, StateMachineInput } from '@rive-app/webgl'
 export type UseRiveParameters = Partial<{
   src: string

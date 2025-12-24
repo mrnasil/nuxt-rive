@@ -53,10 +53,10 @@ const dimensions = ref<Dimensions>({
   width: 0,
   height: 0,
 })
-// const containerStyle = ref({
-//   width: `100%`,
-//   height: `100%`,
-// });
+
+const containerStyle = ref<Record<string, string | number>>({})
+const canvasStyle = ref<Record<string, string | number>>({})
+const canvasSize = ref<Dimensions>({ width: 0, height: 0 })
 
 const animations = computed(() => {
   return props.riveParams?.animations
@@ -93,24 +93,31 @@ watchEffect(() => {
       && boundsChanged
     ) {
       if (options.value.fitCanvasToArtboardHeight) {
-        container.value.style.height = `${height}px`
+        containerStyle.value = { height: `${height}px` }
       }
+
       if (options.value.useDevicePixelRatio) {
-        const dpr = 2
-        canvas.value.width = dpr * width
-        canvas.value.height = dpr * height
-        canvas.value.style.width = width + 'px'
-        canvas.value.style.height = height + 'px'
+        const dpr = window.devicePixelRatio || 1
+        canvasSize.value = {
+          width: dpr * width,
+          height: dpr * height,
+        }
+        canvasStyle.value = {
+          width: width + 'px',
+          height: height + 'px',
+        }
       }
       else {
-        canvas.value.width = width
-        canvas.value.height = height
+        canvasSize.value = { width, height }
+        canvasStyle.value = {}
       }
       dimensions.value = { width, height }
-      RiveInstance?.startRendering()
-    }
-    if (RiveInstance) {
-      RiveInstance.resizeToCanvas()
+
+      // Need to resize instance if it exists
+      if (RiveInstance) {
+        RiveInstance.startRendering()
+        RiveInstance.resizeToCanvas()
+      }
     }
   }
 })
@@ -198,10 +205,12 @@ onMounted(() => {
 onUnmounted(() => {
   if (RiveInstance) {
     RiveInstance.stopRendering()
-    // Clean up all the event listeners? Rive might handle this on stopRendering/cleanup,
-    // but explicit cleanup is often safer if the instance persists.
-    // For now, simple null assignment is what was there.
-    Object.assign(RiveInstance, null)
+    if (RiveInstance.cleanup) {
+      // use specific cleanup if available in newer versions or expected behavior
+      RiveInstance.cleanup()
+    }
+    // Release reference
+    RiveInstance = null
   }
 })
 
@@ -211,10 +220,15 @@ defineExpose({
 </script>
 
 <template>
-  <div ref="container">
+  <div
+    ref="container"
+    :style="containerStyle"
+  >
     <canvas
       ref="canvas"
-      style="vertical-align: top"
+      :width="canvasSize.width"
+      :height="canvasSize.height"
+      :style="[{ verticalAlign: 'top' }, canvasStyle]"
     />
   </div>
 </template>
