@@ -1,5 +1,26 @@
 # Changelog
 
+## v1.2.0
+
+[compare changes](https://github.com/mrnasil/nuxt-rive/compare/v1.1.2...v1.2.0)
+
+### 🚀 Enhancements
+
+- Add Nuxt Rive module with a Vue component, server routes for media and DevTools, and type definitions. ([41bee3e](https://github.com/mrnasil/nuxt-rive/commit/41bee3e))
+- Document Nuxt DevTools integration and its features ([ad615d1](https://github.com/mrnasil/nuxt-rive/commit/ad615d1))
+
+### 🩹 Fixes
+
+- Update component name from <Rive> to <NuxtRive> in documentation and examples ([e7d0427](https://github.com/mrnasil/nuxt-rive/commit/e7d0427))
+
+### 🏡 Chore
+
+- Fix linting errors ([a335581](https://github.com/mrnasil/nuxt-rive/commit/a335581))
+
+### ❤️ Contributors
+
+- Mr. Nasıl ([@mrnasil](https://github.com/mrnasil))
+
 ## v1.1.2
 
 [compare changes](https://github.com/mrnasil/nuxt-rive/compare/v1.1.1...v1.1.2)
