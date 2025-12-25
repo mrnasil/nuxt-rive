@@ -45,12 +45,12 @@ export default defineNuxtModule<ModuleOptions>({
 
     addServerHandler({
       route: '/_nuxt-rive/view',
-      handler: resolver.resolve('./runtime/server/routes/view.get.ts'),
+      handler: resolver.resolve('./runtime/server/routes/view.get'),
     })
 
     addServerHandler({
       route: '/_nuxt-rive/media',
-      handler: resolver.resolve('./runtime/server/routes/media.get.ts'),
+      handler: resolver.resolve('./runtime/server/routes/media.get'),
     })
 
     // Add Rive files to assets
