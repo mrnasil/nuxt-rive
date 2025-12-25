@@ -1,6 +1,6 @@
 {
   "name": "nuxt-rive",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Nuxt Rive module",
   "keywords": [
     "nuxt",
@@ -32,7 +32,7 @@
     "dev": "nuxi dev docs",
     "dev:build": "nuxi build docs",
     "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare docs",
-    "release": "npm run lint && npm run test && npm run prepack && changelogen --release && npm publish && git push --follow-tags",
+    "release": "pnpm run lint && pnpm run test && pnpm run prepack && changelogen --release && pnpm publish && git push --follow-tags",
     "lint": "eslint .",
     "test": "vitest run",
     "test:watch": "vitest watch"
