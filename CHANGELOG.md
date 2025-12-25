@@ -1,5 +1,27 @@
 # Changelog
 
+## v1.2.2
+
+[compare changes](https://github.com/mrnasil/nuxt-rive/compare/v1.2.0...v1.2.2)
+
+### 🩹 Fixes
+
+- Remove .ts extension from server handlers ([#3](https://github.com/mrnasil/nuxt-rive/pull/3))
+
+### 📖 Documentation
+
+- Update version to v1.2.1 and changelog ([8095490](https://github.com/mrnasil/nuxt-rive/commit/8095490))
+
+### 🏡 Chore
+
+- Fix linting errors ([a335581](https://github.com/mrnasil/nuxt-rive/commit/a335581))
+- **release:** V1.2.0 ([6e264db](https://github.com/mrnasil/nuxt-rive/commit/6e264db))
+- Use pnpm in release script ([56093b8](https://github.com/mrnasil/nuxt-rive/commit/56093b8))
+
+### ❤️ Contributors
+
+- Mr. Nasıl ([@mrnasil](https://github.com/mrnasil))
+
 ## v1.2.1
 
 [compare changes](https://github.com/mrnasil/nuxt-rive/compare/v1.2.0...v1.2.1)
