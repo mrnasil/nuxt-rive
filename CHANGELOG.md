@@ -1,5 +1,13 @@
 # Changelog
 
+## v1.2.1
+
+[compare changes](https://github.com/mrnasil/nuxt-rive/compare/v1.2.0...v1.2.1)
+
+### 🩹 Fixes
+
+- Remove `.ts` extension from server handlers to fix module resolution in production ([#3](https://github.com/mrnasil/nuxt-rive/issues/3))
+
 ## v1.2.0
 
 [compare changes](https://github.com/mrnasil/nuxt-rive/compare/v1.1.2...v1.2.0)
@@ -42,14 +50,15 @@
 
 ### Features
 
-* add new `node_modules` dependencies to docs directory ([d48586e](https://github.com/mrnasil/nuxt-rive/commit/d48586eef96e95d44c3d8ff6e710f28c917c5e63))
-* add NuxtRive component with text run support and playground example ([7d9ab87](https://github.com/mrnasil/nuxt-rive/commit/7d9ab8748600457b2c593b6c9993a4a6522d2bb9))
-* Add playground Nuxt configuration and remove StackBlitz setup. ([5a2bcae](https://github.com/mrnasil/nuxt-rive/commit/5a2bcae5725f2eb06230ccc1b983f55d7689be22))
-* Introduce Nuxt Rive module, `NuxtRive.client.vue` component, and `useRiveStateMachineInput` composable. ([3f2b673](https://github.com/mrnasil/nuxt-rive/commit/3f2b673da5d7ed9b308390ee32946ca17a97640f))
-* Remove custom TypeScript and ESLint configurations and update gitignore with comprehensive rules. ([c6ff952](https://github.com/mrnasil/nuxt-rive/commit/c6ff952bbe106b4f18b6b9e72a749010808736f4))
-* Setup initial Nuxt Rive module with composables and types, migrate to ESLint flat config, and update dependencies. ([8aaa55d](https://github.com/mrnasil/nuxt-rive/commit/8aaa55da131aa85aa4fe942dc12bcc6b9a63aea1))
+- add new `node_modules` dependencies to docs directory ([d48586e](https://github.com/mrnasil/nuxt-rive/commit/d48586eef96e95d44c3d8ff6e710f28c917c5e63))
+- add NuxtRive component with text run support and playground example ([7d9ab87](https://github.com/mrnasil/nuxt-rive/commit/7d9ab8748600457b2c593b6c9993a4a6522d2bb9))
+- Add playground Nuxt configuration and remove StackBlitz setup. ([5a2bcae](https://github.com/mrnasil/nuxt-rive/commit/5a2bcae5725f2eb06230ccc1b983f55d7689be22))
+- Introduce Nuxt Rive module, `NuxtRive.client.vue` component, and `useRiveStateMachineInput` composable. ([3f2b673](https://github.com/mrnasil/nuxt-rive/commit/3f2b673da5d7ed9b308390ee32946ca17a97640f))
+- Remove custom TypeScript and ESLint configurations and update gitignore with comprehensive rules. ([c6ff952](https://github.com/mrnasil/nuxt-rive/commit/c6ff952bbe106b4f18b6b9e72a749010808736f4))
+- Setup initial Nuxt Rive module with composables and types, migrate to ESLint flat config, and update dependencies. ([8aaa55d](https://github.com/mrnasil/nuxt-rive/commit/8aaa55da131aa85aa4fe942dc12bcc6b9a63aea1))
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
 ## v1.0.9
 
 - **Documentation**: Complete overhaul with new structure and branding.
@@ -116,7 +125,6 @@ All notable changes to this project will be documented in this file. See [standa
 - Mrnasil ([@mrnasil](http://github.com/mrnasil))
 
 ## v1.0.1
-
 
 ### 🩹 Fixes
 
