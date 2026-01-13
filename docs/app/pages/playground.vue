@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Rive } from '@rive-app/webgl'
+import type { Rive } from '@rive-app/webgl2'
 
 defineOptions({ name: 'PlaygroundPage' })
 
@@ -13,7 +13,7 @@ const rive = shallowRef<Rive | null>(null)
 
 const options = {
   fitCanvasToArtboardHeight: true,
-  useOffscreenRenderer: true,
+  useOffscreenRenderer: true
 }
 
 const riveParams = reactive({
@@ -23,7 +23,7 @@ const riveParams = reactive({
   fit: 'contain' as const,
   alignment: 'center' as const,
   stateMachines: ['Login Machine'],
-  artboard: 'Teddy',
+  artboard: 'Teddy'
 })
 
 const textRunName = ref('MyTextRun')
@@ -38,11 +38,10 @@ const onRiveLoaded = (riveInstance: Rive) => {
 const triggerSuccess = () => {
   if (!rive.value) return
   const input = useRiveStateMachineInput(rive.value, 'Login Machine', 'trigSuccess')
-  if (input) {
-    input.fire()
+  if (input.value) {
+    input.value.fire()
     addLog('Action: Trigger \'trigSuccess\' fired')
-  }
-  else {
+  } else {
     addLog('Error: Input \'trigSuccess\' not found')
   }
 }
@@ -50,11 +49,10 @@ const triggerSuccess = () => {
 const triggerFail = () => {
   if (!rive.value) return
   const input = useRiveStateMachineInput(rive.value, 'Login Machine', 'trigFail')
-  if (input) {
-    input.fire()
+  if (input.value) {
+    input.value.fire()
     addLog('Action: Trigger \'trigFail\' fired')
-  }
-  else {
+  } else {
     addLog('Error: Input \'trigFail\' not found')
   }
 }
@@ -62,11 +60,10 @@ const triggerFail = () => {
 const setHandsUp = (isUp: boolean) => {
   if (!rive.value) return
   const input = useRiveStateMachineInput(rive.value, 'Login Machine', 'isHandsUp')
-  if (input) {
-    input.value = isUp
+  if (input.value) {
+    input.value.value = isUp
     addLog(`Action: Set 'isHandsUp' to ${isUp}`)
-  }
-  else {
+  } else {
     addLog('Error: Input \'isHandsUp\' not found')
   }
 }
@@ -83,7 +80,7 @@ function addLog(msg: string) {
 
 useSeoMeta({
   title: 'Playground - Nuxt Rive',
-  description: 'Interactive playground for Nuxt Rive module.',
+  description: 'Interactive playground for Nuxt Rive module.'
 })
 </script>
 
@@ -145,7 +142,7 @@ useSeoMeta({
               </UButton>
             </div>
 
-            <UDivider />
+            <USeparator />
 
             <div class="space-y-2">
               <label class="text-xs font-medium">Text Runs</label>
@@ -193,7 +190,7 @@ useSeoMeta({
               <div
                 v-for="(log, i) in logs"
                 :key="i"
-                class="text-gray-600 dark:text-gray-300 break-words"
+                class="text-gray-600 dark:text-gray-300 break-all"
               >
                 {{ log }}
               </div>

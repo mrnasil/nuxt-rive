@@ -1,6 +1,6 @@
 import './rive.d.ts'
 
-export type { Rive, StateMachineInput } from '@rive-app/webgl'
+export type { Rive, StateMachineInput } from '@rive-app/webgl2'
 export type UseRiveParameters = Partial<{
   src: string
   artboard?: string

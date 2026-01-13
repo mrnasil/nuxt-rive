@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { EventType, Rive } from '@rive-app/webgl'
+import { EventType, Rive } from '@rive-app/webgl2'
 import { useWindowSize } from '@vueuse/core'
 import {
   ref,
+  shallowRef,
   computed,
   onMounted,
   onUnmounted,
@@ -24,6 +25,7 @@ const props = defineProps<{
   riveParams?: UseRiveParameters
   options?: Partial<UseRiveOptions>
   textRuns?: Record<string, string>
+  ariaLabel?: string
 }>()
 
 /**
@@ -46,7 +48,7 @@ const container = ref<HTMLElement | null>(null)
 const { width: wWidth, height: wHeight } = useWindowSize()
 const riveIsLoaded = ref(false)
 
-let RiveInstance: Rive | null = null
+const RiveInstance = shallowRef<Rive | null>(null)
 
 // const rive = ref<Rive | null>(null);
 const dimensions = ref<Dimensions>({
@@ -114,9 +116,9 @@ watchEffect(() => {
       dimensions.value = { width, height }
 
       // Need to resize instance if it exists
-      if (RiveInstance) {
-        RiveInstance.startRendering()
-        RiveInstance.resizeToCanvas()
+      if (RiveInstance.value) {
+        RiveInstance.value.startRendering()
+        RiveInstance.value.resizeToCanvas()
       }
     }
   }
@@ -126,9 +128,9 @@ watchEffect(() => {
  * watches props.animations and updates the Rive instance
  */
 watch(animations, () => {
-  if (RiveInstance && animations.value) {
-    RiveInstance.stop(RiveInstance.animationNames)
-    RiveInstance.play(animations.value)
+  if (RiveInstance.value && animations.value) {
+    RiveInstance.value.stop(RiveInstance.value.animationNames)
+    RiveInstance.value.play(animations.value)
   }
 })
 
@@ -136,10 +138,10 @@ watch(animations, () => {
  * Watch textRuns prop and update Rive text
  */
 watch(() => props.textRuns, (newTextRuns) => {
-  if (RiveInstance && newTextRuns) {
+  if (RiveInstance.value && newTextRuns) {
     for (const [runName, value] of Object.entries(newTextRuns)) {
       try {
-        RiveInstance.setTextRunValue(runName, value)
+        RiveInstance.value.setTextRunValue(runName, value)
       }
       catch (e) {
         console.warn(`[nuxt-rive] Failed to set text run "${runName}":`, e)
@@ -154,8 +156,8 @@ watch(() => props.textRuns, (newTextRuns) => {
 function getCanvasDimensions() {
   const { width, height }
     = container.value?.getBoundingClientRect() ?? new DOMRect(0, 0, 0, 0)
-  if (RiveInstance && options.value.fitCanvasToArtboardHeight) {
-    const { maxY, maxX } = RiveInstance.bounds
+  if (RiveInstance.value && options.value.fitCanvasToArtboardHeight) {
+    const { maxY, maxX } = RiveInstance.value.bounds
     return { width, height: width * (maxY / maxX) }
   }
   return { width, height }
@@ -175,7 +177,7 @@ onMounted(() => {
       })
 
       r.on(EventType.Load, () => {
-        RiveInstance = r
+        RiveInstance.value = r
         riveIsLoaded.value = true
 
         // Initial text runs
@@ -203,14 +205,19 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
-  if (RiveInstance) {
-    RiveInstance.stopRendering()
-    if (RiveInstance.cleanup) {
+  if (RiveInstance.value) {
+    RiveInstance.value.stopRendering()
+    if (RiveInstance.value.cleanup) {
       // use specific cleanup if available in newer versions or expected behavior
-      RiveInstance.cleanup()
+      try {
+        RiveInstance.value.cleanup()
+      }
+      catch (e) {
+        console.warn('[nuxt-rive] Error cleaning up Rive instance:', e)
+      }
     }
     // Release reference
-    RiveInstance = null
+    RiveInstance.value = null
   }
 })
 
@@ -229,6 +236,8 @@ defineExpose({
       :width="canvasSize.width"
       :height="canvasSize.height"
       :style="[{ verticalAlign: 'top' }, canvasStyle]"
+      role="img"
+      :aria-label="props.ariaLabel || 'Rive Animation'"
     />
   </div>
 </template>
