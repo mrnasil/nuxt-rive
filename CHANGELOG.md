@@ -1,5 +1,17 @@
 # Changelog
 
+## v1.2.3
+
+[compare changes](https://github.com/mrnasil/nuxt-rive/compare/v1.2.2...v1.2.3)
+
+### 🩹 Fixes
+
+- **runtime**: resolve Rive unmounting issues and switch to webgl2 ([c8f5581](https://github.com/mrnasil/nuxt-rive/commit/c8f5581))
+
+### ❤️ Contributors
+
+- Mr. Nasıl ([@mrnasil](https://github.com/mrnasil))
+
 ## v1.2.2
 
 [compare changes](https://github.com/mrnasil/nuxt-rive/compare/v1.2.0...v1.2.2)
