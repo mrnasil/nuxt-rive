@@ -49,6 +49,8 @@ const { width: wWidth, height: wHeight } = useWindowSize()
 const riveIsLoaded = ref(false)
 
 const RiveInstance = shallowRef<Rive | null>(null)
+// Holds the instance from creation (before Load) so it can be cleaned up on early unmount
+let riveRef: Rive | null = null
 
 // const rive = ref<Rive | null>(null);
 const dimensions = ref<Dimensions>({
@@ -175,6 +177,7 @@ onMounted(() => {
         ...props.riveParams,
         canvas: canvas.value,
       })
+      riveRef = r
 
       r.on(EventType.Load, () => {
         RiveInstance.value = r
@@ -205,18 +208,16 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
-  if (RiveInstance.value) {
-    RiveInstance.value.stopRendering()
-    if (RiveInstance.value.cleanup) {
-      // use specific cleanup if available in newer versions or expected behavior
-      try {
-        RiveInstance.value.cleanup()
-      }
-      catch (e) {
-        console.warn('[nuxt-rive] Error cleaning up Rive instance:', e)
-      }
+  if (riveRef) {
+    riveRef.stopRendering()
+    try {
+      riveRef.cleanup()
     }
-    // Release reference
+    catch (e) {
+      console.warn('[nuxt-rive] Error cleaning up Rive instance:', e)
+    }
+    // Release references
+    riveRef = null
     RiveInstance.value = null
   }
 })

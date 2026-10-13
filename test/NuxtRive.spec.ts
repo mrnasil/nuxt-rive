@@ -103,6 +103,36 @@ describe('NuxtRive Component', () => {
     expect(instance.cleanup).toHaveBeenCalled()
   })
 
+  it('cleans up on unmount before load', async () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const instance = (Rive as any).__instance
+    // Never fire the load callback
+    instance.on.mockImplementation(() => {})
+
+    const wrapper = await mount(NuxtRive, {
+      props: {
+        riveParams: {
+          src: 'test.riv',
+        },
+      },
+    })
+
+    await nextTick()
+
+    wrapper.unmount()
+
+    expect(instance.stopRendering).toHaveBeenCalled()
+    expect(instance.cleanup).toHaveBeenCalled()
+
+    instance.on.mockReset()
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    instance.on.mockImplementation((event: string, cb: any) => {
+      if (event === 'load' && typeof cb === 'function') {
+        cb()
+      }
+    })
+  })
+
   it('updates animations when prop changes', async () => {
     const wrapper = await mount(NuxtRive, {
       props: {

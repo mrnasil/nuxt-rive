@@ -1,11 +1,13 @@
 import './rive.d.ts'
+import type { Layout } from '@rive-app/webgl2'
 
 export type { Rive, StateMachineInput } from '@rive-app/webgl2'
 export type UseRiveParameters = Partial<{
   src: string
   artboard?: string
-  animations?: string[]
-  stateMachines?: string[]
+  animations?: string | string[]
+  stateMachines?: string | string[]
+  layout?: Layout
   autoplay?: boolean
   fit?: 'fill' | 'contain' | 'cover' | 'fitWidth' | 'fitHeight' | 'none' | 'scaleDown'
   alignment?: 'center' | 'topLeft' | 'topCenter' | 'topRight' | 'centerLeft' | 'centerRight' | 'bottomLeft' | 'bottomCenter' | 'bottomRight'
