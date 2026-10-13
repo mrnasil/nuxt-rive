@@ -1,5 +1,29 @@
 # Changelog
 
+## v1.3.0
+
+[compare changes](https://github.com/mrnasil/nuxt-rive/compare/v1.2.3...v1.3.0)
+
+### 🩹 Fixes
+
+- **module:** Correct package exports and register DevTools routes in dev only ([6d3da8b](https://github.com/mrnasil/nuxt-rive/commit/6d3da8b))
+- **runtime:** Clean up Rive instance when unmounted before load ([471e694](https://github.com/mrnasil/nuxt-rive/commit/471e694))
+
+### 📖 Documentation
+
+- Update to v1.2.3 ([fd002d3](https://github.com/mrnasil/nuxt-rive/commit/fd002d3))
+- Fix tailwind lint warning in index.md ([9dc6514](https://github.com/mrnasil/nuxt-rive/commit/9dc6514))
+- Improve landing page layout and fix MDC syntax ([4a82122](https://github.com/mrnasil/nuxt-rive/commit/4a82122))
+- Fix composable examples, reference webgl2 runtime, add LICENSE ([956c1a9](https://github.com/mrnasil/nuxt-rive/commit/956c1a9))
+
+### 🏡 Chore
+
+- **deps:** Update all dependencies — Nuxt 4.6, `@rive-app/webgl2` 2.44, VueUse 15, Vitest 5, `@nuxt/test-utils` 4, ESLint 10 ([cb4d156](https://github.com/mrnasil/nuxt-rive/commit/cb4d156))
+
+### ❤️ Contributors
+
+- Mr. Nasıl ([@mrnasil](https://github.com/mrnasil))
+
 ## v1.2.3
 
 [compare changes](https://github.com/mrnasil/nuxt-rive/compare/v1.2.2...v1.2.3)
