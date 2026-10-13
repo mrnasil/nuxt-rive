@@ -15,6 +15,10 @@ export default defineNuxtConfig({
 
   css: ['~/assets/css/main.css'],
 
+  site: {
+    url: 'https://nuxt-rive.pages.dev',
+  },
+
   content: {
     build: {
       markdown: {
@@ -44,10 +48,7 @@ export default defineNuxtConfig({
 
   eslint: {
     config: {
-      stylistic: {
-        commaDangle: 'never',
-        braceStyle: '1tbs',
-      },
+      stylistic: true,
     },
   },
 
