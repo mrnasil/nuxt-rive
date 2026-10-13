@@ -69,7 +69,7 @@ Use the `<NuxtRive>` component to render your animations:
 - **Interactive**: Full control via `useRiveStateMachineInput`.
 - **Dynamic Text**: Update text runs at runtime with the `text-runs` prop.
 - **Events**: Listen to Rive events like Play, Pause, Stop, Loop, and StateChange.
-- **Efficient**: Uses `@rive-app/webgl` for high-performance rendering.
+- **Efficient**: Uses `@rive-app/webgl2` for high-performance rendering.
 - **Nuxt DevTools**: Integrated DevTools tab to view and manage your Rive assets.
 
 ## Nuxt DevTools Integration
@@ -120,19 +120,31 @@ The `<NuxtRive>` component emits the following events:
 
 Helper composable to control State Machine inputs (Triggers, Booleans, Numbers).
 
-```ts
-const { RiveInstance } = await useRive() // or get instance from @rive-is-loaded
+```vue
+<script setup lang="ts">
+import type { Rive } from 'nuxt-rive'
 
-// Trigger an input
-useRiveStateMachineInput(RiveInstance, 'StateMachineName', 'InputName').fire()
+// Get the instance from @rive-is-loaded
+const rive = shallowRef<Rive | null>(null)
 
-// Set a boolean
-const boolInput = useRiveStateMachineInput(RiveInstance, 'StateMachineName', 'BooleanInput')
-boolInput.value = true
+// Each call returns a ComputedRef<StateMachineInput | null>
+const trigger = useRiveStateMachineInput(rive, 'StateMachineName', 'InputName')
+const boolInput = useRiveStateMachineInput(rive, 'StateMachineName', 'BooleanInput')
+const numInput = useRiveStateMachineInput(rive, 'StateMachineName', 'NumberInput')
 
-// Set a number
-const numInput = useRiveStateMachineInput(RiveInstance, 'StateMachineName', 'NumberInput')
-numInput.value = 50
+function update() {
+  trigger.value?.fire() // Trigger an input
+  if (boolInput.value) boolInput.value.value = true // Set a boolean
+  if (numInput.value) numInput.value.value = 50 // Set a number
+}
+</script>
+
+<template>
+  <NuxtRive
+    :rive-params="{ src: 'my-file.riv', stateMachines: 'StateMachineName' }"
+    @rive-is-loaded="rive = $event"
+  />
+</template>
 ```
 
 ## Dynamic Text Example
