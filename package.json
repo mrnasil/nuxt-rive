@@ -18,12 +18,18 @@
   "type": "module",
   "exports": {
     ".": {
-      "types": "./dist/types.d.ts",
-      "import": "./dist/module.mjs",
-      "require": "./dist/module.cjs"
+      "types": "./dist/types.d.mts",
+      "import": "./dist/module.mjs"
     }
   },
-  "main": "./dist/module.cjs",
+  "main": "./dist/module.mjs",
+  "typesVersions": {
+    "*": {
+      ".": [
+        "./dist/types.d.mts"
+      ]
+    }
+  },
   "files": [
     "dist"
   ],
@@ -38,6 +44,7 @@
     "test:watch": "vitest watch"
   },
   "dependencies": {
+    "@nuxt/devtools-kit": "^3.4.2",
     "@nuxt/kit": "^4.2.2",
     "@rive-app/webgl2": "^2.34.0",
     "@vueuse/core": "^14.1.0"

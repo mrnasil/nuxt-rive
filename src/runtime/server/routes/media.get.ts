@@ -1,5 +1,6 @@
 import { defineEventHandler, getQuery, createError } from 'h3'
 import { readFile, stat } from 'node:fs/promises'
+import { relative, resolve, isAbsolute } from 'node:path'
 
 export default defineEventHandler(async (event) => {
   const query = getQuery(event)
@@ -17,6 +18,15 @@ export default defineEventHandler(async (event) => {
     throw createError({
       statusCode: 403,
       statusMessage: 'Access denied: Only .riv files are allowed',
+    })
+  }
+
+  // Only serve files inside the project directory
+  const rel = relative(process.cwd(), resolve(path))
+  if (rel.startsWith('..') || isAbsolute(rel)) {
+    throw createError({
+      statusCode: 403,
+      statusMessage: 'Access denied: Path is outside the project',
     })
   }
 

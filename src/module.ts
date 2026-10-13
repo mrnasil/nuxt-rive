@@ -25,7 +25,7 @@ export default defineNuxtModule<ModuleOptions>({
   },
   // Default configuration options of the Nuxt module
   defaults: {},
-  setup(_options, _nuxt) {
+  setup(_options, nuxt) {
     const resolver = createResolver(import.meta.url)
 
     addComponent({
@@ -43,16 +43,6 @@ export default defineNuxtModule<ModuleOptions>({
 
     addImportsDir(resolver.resolve('runtime/composables'))
 
-    addServerHandler({
-      route: '/_nuxt-rive/view',
-      handler: resolver.resolve('./runtime/server/routes/view.get'),
-    })
-
-    addServerHandler({
-      route: '/_nuxt-rive/media',
-      handler: resolver.resolve('./runtime/server/routes/media.get'),
-    })
-
     // Add Rive files to assets
     extendViteConfig((config) => {
       config.assetsInclude = config.assetsInclude || []
@@ -64,14 +54,27 @@ export default defineNuxtModule<ModuleOptions>({
       }
     })
 
-    addCustomTab({
-      name: 'rive',
-      title: 'Nuxt Rive',
-      icon: 'simple-icons:rive',
-      view: {
-        type: 'iframe',
-        src: '/_nuxt-rive/view',
-      },
-    })
+    // DevTools tab and its server routes read the local filesystem, so register them in dev only
+    if (nuxt.options.dev) {
+      addServerHandler({
+        route: '/_nuxt-rive/view',
+        handler: resolver.resolve('./runtime/server/routes/view.get'),
+      })
+
+      addServerHandler({
+        route: '/_nuxt-rive/media',
+        handler: resolver.resolve('./runtime/server/routes/media.get'),
+      })
+
+      addCustomTab({
+        name: 'rive',
+        title: 'Nuxt Rive',
+        icon: 'simple-icons:rive',
+        view: {
+          type: 'iframe',
+          src: '/_nuxt-rive/view',
+        },
+      })
+    }
   },
 })
