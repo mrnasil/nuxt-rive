@@ -82,13 +82,16 @@ Use the `<NuxtRive>` component to render your animations:
 
 To use it, simply open Nuxt DevTools in your development environment and click on the **Nuxt Rive** tab.
 
+> The DevTools tab and its server routes are only registered in development, so nothing is added to your production build.
+
 ## Component Props
 
 | Prop | Type | Description |
 | --- | --- | --- |
 | `rive-params` | `UseRiveParameters` | Configuration object for the Rive instance (src, artboard, stateMachines, etc.). |
-| `options` | `UseRiveOptions` | Runtime options like `fitCanvasToArtboardHeight` and `useOffscreenRenderer`. |
-| `text-runs` | `Record<string, string>` | **(New)** Replaces text run values dynamically. Key is the run name, value is the new text. |
+| `options` | `UseRiveOptions` | Runtime options: `useDevicePixelRatio`, `fitCanvasToArtboardHeight` and `useOffscreenRenderer`. |
+| `text-runs` | `Record<string, string>` | Replaces text run values dynamically. Key is the run name, value is the new text. |
+| `aria-label` | `string` | Accessible label for the canvas (default: `Rive Animation`). |
 
 ### `rive-params` Interface
 ```ts
@@ -166,7 +169,7 @@ function update() {
 1. Install dependencies with `pnpm`.
 2. Run `pnpm dev:prepare` to generate stubbed `dist` directory.
 3. Make your changes.
-4. Run `pnpm lint`  to verify that there is no issues (consider adding tests).
+4. Run `pnpm lint` and `pnpm test` to verify that there are no issues (consider adding tests).
 5. Submit a PR.
 
 ## License

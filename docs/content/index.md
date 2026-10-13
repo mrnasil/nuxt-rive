@@ -6,7 +6,7 @@ navigation: false
 
 ::section{class="relative z-10 flex flex-col items-center justify-center min-h-[calc(100vh-var(--ui-header-height,64px))] text-center py-20"}
 ::UBadge{variant="subtle" size="md" class="rounded-full mb-12"}
-v1.2.3 Available Now
+v1.3.0 Available Now
 ::
 
 ::div{class="text-5xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-7xl"}
